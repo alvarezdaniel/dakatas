@@ -1,0 +1,40 @@
+﻿@model NoPapel.UI.MVC.ViewModels.IndexViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    @Html.ActionLink("Create New Post", "NewPost");
+    
+    <table>
+        <tr>
+            <th></th>
+        </tr>
+    
+    @foreach (var post in Model.Posts) {
+        <tr>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=post.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=post.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=post.Id })*@
+
+                <h2>@post.Title</h2>
+                @Html.ActionLink("View", "ViewPost", new { id = post.Id })
+                @post.User.Name
+                <br />
+                @post.PublishDate.ToShortDateString()
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
+
